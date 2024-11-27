@@ -1,0 +1,8 @@
+body {
+  width: 100%;
+}
+
+.ubob-css .vjs-control-bar {
+  background-color: lightblue;
+  height: 50px;
+}
