@@ -1,9 +1,301 @@
 body {
   width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-// video js
-.ubob-css .vjs-control-bar {
-  background-color: lightblue;
-  height: 50px;
+.ubob-css {
+  ///// 컨트롤바 고정 css : 주석 처리시 사라졌다 나왔다 함 ////
+  // .vjs-control-bar {
+  //   opacity: 1 !important;
+  //   visibility: visible !important;
+  //   transition: none !important;
+  // }
+  // .vjs-user-inactive .vjs-control-bar {
+  //   opacity: 1 !important;
+  //   visibility: visible !important;
+  // }
+  //////////////////////////////////////////////////////
+  .vjs-control-bar {
+    background-color: #141414;
+    background-image: url("../img/bottomBg.png");
+    background-repeat: no-repeat;
+    height: 34px;
+  }
+  .vjs-progress-control {
+    position: absolute;
+    flex: none;
+    width: 490px !important;
+    left: 190px;
+    color: #98eefd;
+  }
+  .vjs-play-progress {
+    background-color: #98eefd;
+  }
+  .vjs-time-divider,
+  .vjs-current-time,
+  .vjs-duration {
+    display: block;
+    position: absolute;
+    top: 2px;
+    &.vjs-current-time {
+      color: #98eefd;
+      left: 675px; // -15
+    }
+    &.vjs-time-divider {
+      left: 700px;
+    }
+    &.vjs-duration {
+      left: 705px; // +5
+    }
+  }
+  .vjs-play-control {
+    position: absolute;
+    left: 760px;
+    &:hover {
+      color: #98eefd;
+    }
+  }
+  .vjs-volume-panel {
+    left: 800px;
+    &:hover {
+      color: #98eefd;
+      .vjs-volume-level {
+        background-color: #98eefd;
+      }
+    }
+  }
+  .vjs-playback-rate {
+    position: absolute;
+    left: 840px;
+    button {
+      left: 0px;
+    }
+    &:hover {
+      color: #98eefd;
+    }
+  }
+  .vjs-fullscreen-control {
+    position: absolute;
+    left: 880px;
+    &:hover {
+      color: #98eefd;
+    }
+  }
+  // 자막
+  .vjs-text-track-display {
+    .vjs-text-track-cue {
+      font-size: 20px !important;
+    }
+  }
+  .next-button-box {
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 900px;
+    .back-button {
+      // background: url("../img/prev.png") no-repeat 50% 50%;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      &:before,
+      &:after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 0;
+        top: 10px;
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        border-right: 10px solid white; /* 삼각형 색상 */
+      }
+      &:before {
+        left: 0;
+      }
+      &:after {
+        left: 8px;
+      }
+      &:hover {
+        &:before,
+        &:after {
+          border-right: 10px solid #98eefd; /* 삼각형 색상 */
+        }
+      }
+    }
+    .next-button {
+      // background: url("../img/next.png") no-repeat 50% 50%;
+      display: flex;
+      align-items: center;
+      margin: 0 0 0 20px;
+      cursor: pointer;
+      &:before,
+      &:after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 0;
+        top: 10px;
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        border-left: 10px solid white; /* 삼각형 색상 */
+      }
+      &:before {
+        left: 0;
+      }
+      &:after {
+        left: 8px;
+      }
+      &:hover {
+        &:before,
+        &:after {
+          border-left: 10px solid #98eefd; /* 삼각형 색상 */
+        }
+      }
+    }
+    .pageNum {
+      font-size: 20px;
+      color: #98eefd;
+      margin: 0 0 2px 0;
+    }
+    .centerNum {
+      font-size: 20px;
+      margin: 0px 20px 2px 20px;
+    }
+    .totalNum {
+      font-size: 20px;
+      margin: 0 0 2px 0;
+    }
+  }
+  .bubble {
+    position: absolute;
+    top: -80%;
+    left: 90%;
+    width: 64px;
+    height: 31px;
+    background: url("../img/nextBalloon.png") no-repeat 0% 0%;
+    &:hover {
+      background: url("../img/nextBalloon.png") no-repeat 0% 49%;
+    }
+    button {
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+      background-color: transparent;
+      border: none;
+    }
+  }
+  // 인덱스
+  #indexArea {
+    display: inline-block;
+    position: absolute;
+    top: -1100%;
+    left: 0;
+    #indexBtn {
+      display: block;
+      cursor: pointer;
+      position: absolute;
+      top: 40px;
+      left: 0;
+      width: 19px;
+      height: 61px;
+      background: url("../img/indexbtn.png") no-repeat 0% 0%;
+      &:hover {
+        background-image: url("../img/indexbtn_over.png");
+      }
+    }
+    #indexCon {
+      opacity: 0;
+      width: 261px;
+      height: auto;
+      position: absolute;
+      top: 0;
+      left: -270px;
+      transition: all 0.3s ease-in-out;
+      .closeBtn {
+        position: absolute;
+        top: 0;
+        right: -16px;
+        width: 17px;
+        height: 17px;
+        background: url("../img/closebtn.png") no-repeat 0% 0%;
+        cursor: pointer;
+        &:hover {
+          background-image: url("../img/closebtn_over.png");
+        }
+      }
+      .index {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        width: 261px;
+        height: 46px;
+        background: url("../img/icon.png") no-repeat 0% 0%;
+        padding: 0 0 0 60px;
+        font-size: 25px;
+        font-weight: 800;
+        color: #000;
+        .textBox {
+          opacity: 0.5;
+          padding-bottom: 3px;
+        }
+        &:hover {
+          background-image: url("../img/icon_over.png");
+          .textBox {
+            opacity: 1;
+          }
+        }
+        &.on {
+          background-image: url("../img/icon_over.png");
+          .textBox {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}
+
+// 풀스크린일때 css
+.vjs-fullscreen {
+  .vjs-progress-control {
+    left: 24%;
+  }
+  .vjs-time-divider,
+  .vjs-current-time,
+  .vjs-duration {
+    &.vjs-current-time {
+      color: #98eefd;
+      left: 50%; // -15
+    }
+    &.vjs-time-divider {
+      left: 52%;
+    }
+    &.vjs-duration {
+      left: 53%;
+    }
+  }
+  .vjs-play-control {
+    left: 56%;
+  }
+  .vjs-volume-panel {
+    left: 58.7%;
+  }
+  .vjs-playback-rate {
+    left: 61.4%;
+  }
+  .vjs-fullscreen-control {
+    left: 64.2%;
+  }
+  .next-button-box {
+    left: 65.7%;
+  }
+  .bubble {
+    position: absolute;
+    top: -80%;
+    left: 70.7%;
+  }
+  #indexArea {
+    top: -1700%;
+  }
 }
